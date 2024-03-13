@@ -1,0 +1,29 @@
+{
+  "name": "anagramts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "rm -rf ./dist && tsc",
+    "start": "node ./dist",
+    "all": "npm i && rm -rf ./dist && tsc && node ./dist"
+  },
+  "keywords": [
+    "anagram",
+    "ts"
+  ],
+  "author": "RipperNoChart",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10",
+    "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "@types/readline-sync": "^1.4.8"
+  }
+}
