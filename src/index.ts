@@ -7,11 +7,10 @@ const readline: Interface = createInterface({
   output: process.stdout,
 });
 
-const questionAsync = promisify(readline.question).bind(readline);
+const questionAsync: (arg1: string) => Promise<void> = promisify(readline.question).bind(readline);
 
 const processData = async (inputWord: string): Promise<Array<string>> => {
   const words: Array<string> = await resolveAnagram(inputWord);
-  console.log(words);
   return words;
 };
 
@@ -20,10 +19,12 @@ async function getUserInput(): Promise<string> {
 }
 
 async function main(): Promise<void> {
-  let userInput = await getUserInput();
+  let userInput: string = await getUserInput();
 
   while (userInput.toLowerCase() !== 'exit') {
-    await processData(userInput);
+    await processData(userInput).then((value: Array<string>) => {
+      console.log(value);
+    });
     userInput = await getUserInput();
   }
 
